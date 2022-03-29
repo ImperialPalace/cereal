@@ -11,8 +11,8 @@ if(APPLE)
     option(SKIP_PORTABILITY_TEST "Skip portability (32 bit) tests" ON)
 endif()
 
-option(BUILD_DOC "Build documentation" ON)
-option(BUILD_SANDBOX "Build sandbox examples" ON)
+option(BUILD_DOC "Build documentation" OFF)
+option(BUILD_SANDBOX "Build sandbox examples" OFF)
 option(SKIP_PERFORMANCE_COMPARISON "Skip building performance sandbox comparison (requires boost)" OFF)
 
 # TODO: should not be needed! CK
@@ -106,10 +106,10 @@ if(JUST_INSTALL_CEREAL)
 endif()
 
 
-if(NOT SKIP_PERFORMANCE_COMPARISON)
-    # Boost serialization for performance sandbox
-    find_package(Boost REQUIRED COMPONENTS serialization)
-endif()
+#if(NOT SKIP_PERFORMANCE_COMPARISON)
+#    # Boost serialization for performance sandbox
+#    find_package(Boost REQUIRED COMPONENTS serialization)
+#endif()
 
 
 option(BUILD_TESTS "Build tests" ${CEREAL_MASTER_PROJECT})
@@ -127,3 +127,6 @@ endif()
 if(BUILD_DOC)
     add_subdirectory(doc)
 endif()
+
+
+add_subdirectory(tutorial)
